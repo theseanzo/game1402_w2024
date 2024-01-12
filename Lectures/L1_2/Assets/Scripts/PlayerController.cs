@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    InputController inputController;
     AnimatorController animatorController;
     Vector3 moveDirection;
     Transform cameraObject;
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        inputController = GetComponent<InputController>();
         animatorController = GetComponent<AnimatorController>();    
         rb = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
