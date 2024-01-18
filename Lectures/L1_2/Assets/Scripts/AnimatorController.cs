@@ -21,7 +21,6 @@ public class AnimatorController : MonoBehaviour
     {
         
     }
-
     public void UpdateMovementValues(float xMovement, float yMovement, bool isSprinting = false)
     {
         float snappedX = SnapValues(xMovement, 0.55f, 0.5f, 1.0f);

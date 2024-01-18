@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         animatorController = GetComponent<AnimatorController>(); //this grabs the AnimatorController
         rb = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-       // GroundCheck();
+        // GroundCheck();
     }
     private void FixedUpdate()
     {
@@ -79,13 +81,13 @@ public class PlayerController : MonoBehaviour
         rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffset;
 
         if (!isGrounded)
-        { 
+        {
             if (Physics.SphereCast(rayCastOrigin, 0.5f, -Vector3.up, out hit, 0.5f, groundLayer))
             {
                 isGrounded = true;
             }
         }
-   
+
     }
     private void HandleMovement()
     {
@@ -156,11 +158,13 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        isGrounded = true;
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            isGrounded = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isGrounded = false;
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            isGrounded = false;
     }
 }
