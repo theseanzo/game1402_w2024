@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
         yMovement = Input.GetAxis("Vertical");
         movementAmount = Mathf.Abs(xMovement) + Mathf.Abs(yMovement);
         animatorController.UpdateMovementValues(0, movementAmount, isSprinting);
+        
     }
     private void HandleSprintInput()
     {
