@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput();
+        animatorController.UpdateMovementValues(0, movementAmount, isSprinting);
     }
     private void LateUpdate()
     {
@@ -69,9 +69,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleInput()
     {
-        HandleMovementInput();
-        HandleSprintInput(); //we handle sprint input as well
-        HandleJumpInput();
+
 
     }
     private void GroundCheck() //this is where we figure out if we are on the ground or not
@@ -128,28 +126,29 @@ public class PlayerController : MonoBehaviour
         transform.rotation = playerRotation;
     }
 
-    private void HandleMovementInput()
+    public void HandleMovementInput(Vector2 movement)
     {
-        xMovement = Input.GetAxis("Horizontal");
-        yMovement = Input.GetAxis("Vertical");
+        xMovement = movement.x;
+        yMovement = movement.y;
         movementAmount = Mathf.Abs(xMovement) + Mathf.Abs(yMovement);
-        animatorController.UpdateMovementValues(0, movementAmount, isSprinting);
+        
         
     }
-    private void HandleSprintInput()
+    public void HandleSprintInput(bool sprint)
     {
-        if (Input.GetButton("Sprint")) //Remember: GetKey, GetButton, etc. is for a button that's held down. GetKeyDown, GetButtonDown, etc. only trigger when the button is held down
-        {
-            isSprinting = true;
-        }
-        else
-        {
-            isSprinting = false;
-        }
+        isSprinting = sprint;
+        //if (Input.GetButton("Sprint")) //Remember: GetKey, GetButton, etc. is for a button that's held down. GetKeyDown, GetButtonDown, etc. only trigger when the button is held down
+        //{
+        //    isSprinting = true;
+        //}
+        //else
+        //{
+        //    isSprinting = false;
+        //}
     }
-    private void HandleJumpInput()
+    public void HandleJumpInput()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (isGrounded)
         {
             Vector3 velocity = rb.velocity;
             velocity.y = jumpForce; //change our y velocity to be whatever we want it to be for jumping up

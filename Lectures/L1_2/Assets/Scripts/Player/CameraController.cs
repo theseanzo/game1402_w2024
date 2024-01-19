@@ -30,7 +30,6 @@ public class CameraController : MonoBehaviour
     private void HandleAllCameraMovement()
     {
         FollowTarget();
-        RotateCamera();
     }
     private void FollowTarget()
     {
@@ -38,10 +37,10 @@ public class CameraController : MonoBehaviour
         transform.position = targetPosition;
     }
 
-    private void RotateCamera()
+    public void RotateCamera(Vector2 movement)
     {
-        lookAngle = lookAngle + Input.GetAxis("Mouse X") * cameraLookSpeed;
-        pivotAngle = pivotAngle - (Input.GetAxis("Mouse Y") * cameraPivotSpeed);
+        lookAngle = lookAngle + movement.x * cameraLookSpeed;
+        pivotAngle = pivotAngle - (movement.y * cameraPivotSpeed);
         pivotAngle = Mathf.Clamp(pivotAngle, minPivotAngle, maxPivotAngle);
         Vector3 rotation = Vector3.zero;
         rotation.y = lookAngle;
