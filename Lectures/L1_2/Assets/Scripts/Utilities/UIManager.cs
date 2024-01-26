@@ -20,9 +20,9 @@ public class UIManager : Singleton<UIManager>
     {
         
     }
-    public void SetScore(int score)
+    public void SetScore(int score, int collected, int totalItems)
     { 
-        this.scoreText.text = string.Format("Score: {0}", score);
+        this.scoreText.text = string.Format("Score: {0}\n{1}/{2}", score, collected, totalItems);
     }
     public void SetTime(float time)
     {

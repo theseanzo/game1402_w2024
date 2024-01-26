@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimatorController : MonoBehaviour
 {
     Animator animator;
+    Coroutine taunt;
 
     private void Awake()
     {
@@ -14,7 +15,24 @@ public class AnimatorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //this happens at approximately when the program loads
+        taunt = StartCoroutine(FallDown());
+        Invoke("StopFalling", 11f);
+    }
+
+    void StopFalling()
+    {
+        StopCoroutine(taunt);
+    }
+    IEnumerator FallDown()
+    {
         
+        for(int i = 0; i < 5; i++)
+        { 
+            animator.SetTrigger("FallDown");
+            yield return new WaitForSeconds(5f);
+        }
+
     }
 
     // Update is called once per frame

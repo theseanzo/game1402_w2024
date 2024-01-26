@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    bool hit = false;
     public int Value
     {
         get; protected set;
@@ -23,6 +24,16 @@ public class Food : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>() && !hit)
+        {
+            hit = true;
+            GameManager.Instance.Score += Value; //recall that the value is set in each one of the food's children
+            Destroy(this.gameObject);
+        }
         
     }
 }

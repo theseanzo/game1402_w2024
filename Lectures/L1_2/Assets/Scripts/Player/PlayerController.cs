@@ -44,15 +44,36 @@ public class PlayerController : MonoBehaviour
 
     float inAirTimer;
 
+    SkinnedMeshRenderer meshRenderer;
     private void Awake()
     {
         animatorController = GetComponent<AnimatorController>(); //this grabs the AnimatorController
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();//remember this when dealing with 3d models as they typically do not have the mesh renderer in the same place as where you put all of your animators, scripts, etc 
         rb = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    private void Start()
+    {
+        StartCoroutine(ChangePlayerColor());
+    }
+    IEnumerator ChangePlayerColor()
+    {
+        float alpha = 0.0f;
+        bool upOrDown = true;
+        while (true)
+        {
+            alpha += 0.005f * (upOrDown ? 1f : -1f);
+            if (alpha >= 1.0f || alpha <= 0.0f)
+                upOrDown = !upOrDown;
 
+            meshRenderer.material.SetColor("_Color", Color.white * alpha);
+            yield return new WaitForFixedUpdate();
+        }
+
+        
+    }
     // Update is called once per frame
     void Update()
     {
