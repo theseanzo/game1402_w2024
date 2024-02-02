@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+	[SerializeField]
+	GameObject hitEffect; //this is goign to be the effect we use when we shoot our gun
 	// Start is called before the first frame update
 	private void OnCollisionEnter2D(Collision2D other) 
 	{
-
+		GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+		Destroy(effect, 2f);
+		Destroy(gameObject);
 	}
 }

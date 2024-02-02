@@ -22,8 +22,11 @@ public class Gun : MonoBehaviour
 	{
 		
 	}
-	public virtual void Shoot()
+	public virtual void Shoot(Vector2 additionalVelocity = new Vector2())
 	{
-
+		Bullet bullet = Instantiate<Bullet>(bulletPrefab, firePoint);
+		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); //we create a new copy of a bullet and then we get its rigid body
+		rb.velocity = additionalVelocity;
+		rb?.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); //we add a force but we add an impulse force to represent a gun, because it is an impulse force
 	}
 }
