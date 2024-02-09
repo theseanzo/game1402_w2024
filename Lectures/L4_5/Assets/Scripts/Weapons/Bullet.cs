@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : PoolObject
 {
 	[SerializeField]
-	GameObject hitEffect;
+	string hitEffectName = "BigExplosion";
 	// Start is called before the first frame update
 	private void OnCollisionEnter2D(Collision2D other) 
 	{
-		GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-		Destroy(effect, 2f);
-		Destroy(gameObject);
+
+		Explosion effect = (Explosion)PoolManager.Instance.Spawn(hitEffectName);
+		effect.transform.position = transform.position;
+		effect.transform.rotation = transform.rotation;
+		this.OnDeSpawn();
 	}
 }

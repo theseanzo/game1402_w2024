@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 566407911336532835}
   - component: {fileID: 566407911336532834}
   - component: {fileID: 7265002529535791336}
+  - component: {fileID: 9153498568584047932}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -4971,6 +4972,19 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 566407911336532835}
+--- !u!114 &9153498568584047932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566407911336532845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5ee9b623bc37d4695ae7a116415c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeActive: 2
 --- !u!1 &566407911917990310
 GameObject:
   m_ObjectHideFlags: 0

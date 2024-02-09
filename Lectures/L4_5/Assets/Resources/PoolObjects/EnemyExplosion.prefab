@@ -9641,6 +9641,7 @@ GameObject:
   - component: {fileID: 5594411246992963478}
   - component: {fileID: 5594411246992963481}
   - component: {fileID: 5594411246992963476}
+  - component: {fileID: 1486598570553557733}
   m_Layer: 0
   m_Name: EnemyExplosion
   m_TagString: Untagged
@@ -14681,6 +14682,19 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 0
   fadeOutReference: {fileID: 0}
+--- !u!114 &1486598570553557733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594411246992963480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5ee9b623bc37d4695ae7a116415c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeActive: 2
 --- !u!1 &5594411247234027916
 GameObject:
   m_ObjectHideFlags: 0
