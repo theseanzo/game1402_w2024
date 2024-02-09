@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
-  moveSpeed: 150
+  moveSpeed: 5
   gun: {fileID: 1251184179740026024, guid: cf80718a3eefcff41b49e66608bd651f, type: 3}
   gunLocation: {fileID: 5040427069703093861}
 --- !u!114 &5646427839632344490

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 	[SerializeField]
-	GameObject hitEffect; //this is goign to be the effect we use when we shoot our gun
+	GameObject hitEffect;
 	// Start is called before the first frame update
 	private void OnCollisionEnter2D(Collision2D other) 
 	{

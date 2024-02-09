@@ -29,4 +29,5 @@ public class Gun : MonoBehaviour
 		rb.velocity = additionalVelocity;
 		rb?.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); //we add a force but we add an impulse force to represent a gun, because it is an impulse force
 	}
+	
 }
