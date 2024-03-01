@@ -27,7 +27,9 @@ public class GunShooter : MonoBehaviour
     }
     public void Shoot()
     {
+        //similar to what we have seen before. we Instantiate a prefab at a particular location and at a particular rotation
+        //we then shoot the projectile in a direction
         Projectile projectile = Instantiate(bulletPrefab, fireLocation.position, fireLocation.rotation);
-        projectile.GetComponent<Rigidbody>().AddForce(-transform.right * projectileForce, ForceMode.Impulse);
+        projectile.GetComponent<Rigidbody>().AddForce(-transform.right * projectileForce, ForceMode.Impulse); //because the 3d model aims to the left, our projectile needs to get force added to it in that same direction
     }
 }

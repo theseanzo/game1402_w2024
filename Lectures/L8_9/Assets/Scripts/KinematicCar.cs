@@ -18,6 +18,6 @@ public class KinematicCar : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        _rb.MovePosition(transform.position + moveVector * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + moveVector * Time.fixedDeltaTime);
     }
 }
