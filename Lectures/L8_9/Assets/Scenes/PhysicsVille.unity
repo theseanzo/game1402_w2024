@@ -7168,8 +7168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn1: {fileID: 786547779}
   spawn2: {fileID: 164092411}
-  sheepPrefab1: {fileID: 6696997376730946083, guid: 083a1156f6d88724cb4d25fa7d2decfb, type: 3}
-  sheepPrefab2: {fileID: 6696997376730946083, guid: 083a1156f6d88724cb4d25fa7d2decfb, type: 3}
+  sheepPrefab1: {fileID: 8945835207111631637, guid: 083a1156f6d88724cb4d25fa7d2decfb, type: 3}
+  sheepPrefab2: {fileID: 8945835207111631637, guid: 083a1156f6d88724cb4d25fa7d2decfb, type: 3}
   sheepSpeed: 30
 --- !u!1001 &948582593
 PrefabInstance:
