@@ -704,22 +704,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f30fcba0ed3e345bcde89778eb6add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - <Speed>k__BackingField: 2
-    <TimeAfterWave>k__BackingField: 3
-    <TimeBeforeSpawn>k__BackingField: 1
-    <TargetPrefab>k__BackingField: {fileID: 6543490766269000897, guid: cc9e0044e2eb7b34698265fa3d7a0b7a, type: 3}
-    <WaveItems>k__BackingField: 6
-  - <Speed>k__BackingField: 2
-    <TimeAfterWave>k__BackingField: 5
-    <TimeBeforeSpawn>k__BackingField: 3
-    <TargetPrefab>k__BackingField: {fileID: 6543490766269000897, guid: cc9e0044e2eb7b34698265fa3d7a0b7a, type: 3}
-    <WaveItems>k__BackingField: 10
   startPosition: {fileID: 387252909}
   endPosition: {fileID: 1861455727}
-  targetHit:
-    m_PersistentCalls:
-      m_Calls: []
+  waves:
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 0
+      <TimeBeforeSpawn>k__BackingField: 0
+      <TimeAfterWave>k__BackingField: 0
+      <TargetPrefab>k__BackingField: {fileID: 916283072578374732, guid: 11c6f2f4603d19d49a9013bd91eeb1db, type: 3}
+      <NumberOfTargets>k__BackingField: 0
 --- !u!4 &118640789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
@@ -10356,17 +10349,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f30fcba0ed3e345bcde89778eb6add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - <Speed>k__BackingField: 2
-    <TimeAfterWave>k__BackingField: 5
-    <TimeBeforeSpawn>k__BackingField: 1
-    <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
-    <WaveItems>k__BackingField: 15
   startPosition: {fileID: 1980278874}
   endPosition: {fileID: 2027457751}
-  targetHit:
-    m_PersistentCalls:
-      m_Calls: []
+  waves:
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 0
+      <TimeBeforeSpawn>k__BackingField: 0
+      <TimeAfterWave>k__BackingField: 0
+      <TargetPrefab>k__BackingField: {fileID: 6543490766269000897, guid: cc9e0044e2eb7b34698265fa3d7a0b7a, type: 3}
+      <NumberOfTargets>k__BackingField: 0
 --- !u!4 &1276706490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
@@ -15116,17 +15107,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f30fcba0ed3e345bcde89778eb6add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - <Speed>k__BackingField: 3
-    <TimeAfterWave>k__BackingField: 4
-    <TimeBeforeSpawn>k__BackingField: 1
-    <TargetPrefab>k__BackingField: {fileID: 916283072578374732, guid: 11c6f2f4603d19d49a9013bd91eeb1db, type: 3}
-    <WaveItems>k__BackingField: 5
   startPosition: {fileID: 1214635798}
   endPosition: {fileID: 1736011939}
-  targetHit:
-    m_PersistentCalls:
-      m_Calls: []
+  waves:
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 1
+      <TimeBeforeSpawn>k__BackingField: 1
+      <TimeAfterWave>k__BackingField: 5
+      <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
+      <NumberOfTargets>k__BackingField: 6
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 2
+      <TimeBeforeSpawn>k__BackingField: 1
+      <TimeAfterWave>k__BackingField: 3
+      <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
+      <NumberOfTargets>k__BackingField: 5
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 3
+      <TimeBeforeSpawn>k__BackingField: 1
+      <TimeAfterWave>k__BackingField: 0
+      <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
+      <NumberOfTargets>k__BackingField: 3
 --- !u!4 &1923741463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
@@ -16422,11 +16423,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2114295926}
   timeText: {fileID: 1102789984}
+  gameDuration: 30
   waveSpawners:
   - {fileID: 1917650451}
   - {fileID: 1270307476}
   - {fileID: 113708918}
-  gameDuration: 30
 --- !u!1001 &2049710988
 PrefabInstance:
   m_ObjectHideFlags: 0

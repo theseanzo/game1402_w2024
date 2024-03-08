@@ -8,6 +8,7 @@ public class Exhibit3 : Exhibit
 
 	[SerializeField] private TMP_Text scoreText, timeText;
 	[SerializeField] float gameDuration = 30f;
+    [SerializeField] List<WaveSpawner> waveSpawners = new List<WaveSpawner>(); //specify the wave spawners in our scene
     #endregion
     #region private variables
 
@@ -18,9 +19,12 @@ public class Exhibit3 : Exhibit
 	{
 		
 	}
-    public void StartGame()
+    public void StartGame() //when we start the game, we start spawning
     {
-
+        foreach(WaveSpawner spawner in waveSpawners)
+        {
+            spawner.StartSpawn(); 
+        }
 	}
 
     protected override void OnTriggerEnter(Collider other)

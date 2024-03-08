@@ -8,6 +8,8 @@ public class WaveSpawner : MonoBehaviour
     #region Serialize Fields
     [SerializeField]
     Transform startPosition, endPosition;
+    [SerializeField]
+    List<Wave> waves = new List<Wave>();
     #endregion
     #region Public variables
     #endregion
@@ -28,5 +30,8 @@ public class WaveSpawner : MonoBehaviour
     } 
     public void StartSpawn()
     {
+        //this is called when our game begins
+        Debug.Log("We started spawning");
+
     }
 }
