@@ -33,7 +33,7 @@ public class Exhibit : MonoBehaviour
         }
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.GetComponentInParent<FirstPersonController>()) //when our player enters an exhibit, we turn the exhibit on by activating its children
         {
@@ -43,7 +43,7 @@ public class Exhibit : MonoBehaviour
         }
 
     }
-    protected void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.GetComponentInParent<FirstPersonController>()) //when we exit, we turn the children off 
         {

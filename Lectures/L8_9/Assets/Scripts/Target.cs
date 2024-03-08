@@ -20,7 +20,6 @@ public class Target : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("You hit me");
         if (collision.gameObject.GetComponent<Projectile>())
         {
             Hit?.Invoke(); //we invoke our event, which means to broadcast or call the event out. A "Hey, I was hit message" to anyone who wants to listen. Sort of like a fire alarm
