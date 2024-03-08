@@ -708,11 +708,14 @@ MonoBehaviour:
   endPosition: {fileID: 1861455727}
   waves:
   - <Data>k__BackingField:
-      <Speed>k__BackingField: 0
-      <TimeBeforeSpawn>k__BackingField: 0
+      <Speed>k__BackingField: 4
+      <TimeBeforeSpawn>k__BackingField: 0.5
       <TimeAfterWave>k__BackingField: 0
       <TargetPrefab>k__BackingField: {fileID: 916283072578374732, guid: 11c6f2f4603d19d49a9013bd91eeb1db, type: 3}
-      <NumberOfTargets>k__BackingField: 0
+      <NumberOfTargets>k__BackingField: 16
+  targetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &118640789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
@@ -10353,11 +10356,20 @@ MonoBehaviour:
   endPosition: {fileID: 2027457751}
   waves:
   - <Data>k__BackingField:
-      <Speed>k__BackingField: 0
-      <TimeBeforeSpawn>k__BackingField: 0
-      <TimeAfterWave>k__BackingField: 0
+      <Speed>k__BackingField: 2
+      <TimeBeforeSpawn>k__BackingField: 0.5
+      <TimeAfterWave>k__BackingField: 3
       <TargetPrefab>k__BackingField: {fileID: 6543490766269000897, guid: cc9e0044e2eb7b34698265fa3d7a0b7a, type: 3}
-      <NumberOfTargets>k__BackingField: 0
+      <NumberOfTargets>k__BackingField: 8
+  - <Data>k__BackingField:
+      <Speed>k__BackingField: 4
+      <TimeBeforeSpawn>k__BackingField: 0.25
+      <TimeAfterWave>k__BackingField: 3
+      <TargetPrefab>k__BackingField: {fileID: 6543490766269000897, guid: cc9e0044e2eb7b34698265fa3d7a0b7a, type: 3}
+      <NumberOfTargets>k__BackingField: 8
+  targetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1276706490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
@@ -15117,17 +15129,20 @@ MonoBehaviour:
       <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
       <NumberOfTargets>k__BackingField: 6
   - <Data>k__BackingField:
-      <Speed>k__BackingField: 2
-      <TimeBeforeSpawn>k__BackingField: 1
+      <Speed>k__BackingField: 3
+      <TimeBeforeSpawn>k__BackingField: 0.5
       <TimeAfterWave>k__BackingField: 3
       <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
       <NumberOfTargets>k__BackingField: 5
   - <Data>k__BackingField:
-      <Speed>k__BackingField: 3
-      <TimeBeforeSpawn>k__BackingField: 1
+      <Speed>k__BackingField: 5
+      <TimeBeforeSpawn>k__BackingField: 0.25
       <TimeAfterWave>k__BackingField: 0
       <TargetPrefab>k__BackingField: {fileID: 9103144258151912685, guid: 53e13acc39f80a045bc027ac638493a2, type: 3}
       <NumberOfTargets>k__BackingField: 3
+  targetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1923741463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}

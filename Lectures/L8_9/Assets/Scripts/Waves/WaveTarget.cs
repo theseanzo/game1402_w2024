@@ -35,7 +35,7 @@ public class WaveTarget : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + moveVector * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + moveVector * speed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
