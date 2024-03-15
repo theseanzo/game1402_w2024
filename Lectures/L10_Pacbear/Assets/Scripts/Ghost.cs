@@ -54,7 +54,7 @@ public class Ghost : BaseUnit
             }
             else
             {
-                GoToPacBear();
+                Wander();//GoToPacBear();
             }
         }
         Move();
@@ -62,16 +62,30 @@ public class Ghost : BaseUnit
     void GoHome()
     {
         this.speed = 10;
+        path = PathFinder.instance.GetPath(nextPosInGrid, spawnLocation.posInGrid);
+        Vector2Int nextDestination = path.Pop();
+        direction = nextDestination - nextPosInGrid;
         //we will finish this once our pathfinder is done.
+        if(path.Count == 0)
+        {
+            isReturningToSpawn = false; //this will turn back on their 
+        }
     }
     void GoToPacBear()
     {
         this.speed = 0.5f;
+        path = PathFinder.instance.GetPath(nextPosInGrid, bear.posInGrid);
+        if(path.Count != 0)
+        {
+            Vector2Int nextDestination = path.Pop();
+            direction = nextDestination - nextPosInGrid;
+        }
         //We will finish this code once our pathfinder is done
 
     }
     void Wander()
     {
+        this.speed = .5f;
         List<Vector2Int> options = new List<Vector2Int>();
         foreach (Vector2Int dir in directions)
         {
