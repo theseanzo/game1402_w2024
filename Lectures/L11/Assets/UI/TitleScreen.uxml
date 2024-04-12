@@ -1,3 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/uss/TitleText.uss?fileID=7433441132597879392&amp;guid=ea3408c9cffc0b14183d4e4a8ba0ad67&amp;type=3#TitleText" />
+    <ui:VisualElement name="ParentElement" style="height: 100%; width: 100%; background-image: url(&apos;project://database/Assets/UI/Images/Background/title_background.png?fileID=2800000&amp;guid=973f69316330ffb4c98e5d47d1c5bf26&amp;type=3#title_background&apos;);">
+        <ui:GroupBox name="TitleBox" class="flyIn" style="width: 80%; height: 50%; margin-left: auto; margin-right: auto; transition-property: translate; transition-duration: 0.5s; transition-delay: 2s;">
+            <ui:Label text="Game Programming" display-tooltip-when-elided="true" class="headerText" style="font-size: 160px; white-space: normal;" />
+            <ui:Label text="Creepy Visual Novel Lecture" display-tooltip-when-elided="true" class="headerText" style="white-space: normal;" />
+        </ui:GroupBox>
+        <ui:Button text="Press To Start" display-tooltip-when-elided="true" name="StartButton" class="flyIn fadeBackground" style="margin-left: auto; margin-right: auto; transition-property: translate, background-color; transition-duration: 0.5s, 0.5s; transition-delay: 3s, 0s;" />
+        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_19.png?fileID=2800000&amp;guid=1d78ea13ed0615c4996735add71cbd43&amp;type=3#Crosshair_19&apos;); width: 362px; height: 382px; -unity-background-scale-mode: scale-to-fit; position: absolute; top: 696px; left: 762px;" />
+    </ui:VisualElement>
 </ui:UXML>
