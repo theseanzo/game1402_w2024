@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 
 public class UIDialogueDisplay : MonoBehaviour
 {
+    [HideInInspector]
     public UnityEvent displayComplete;
+    [HideInInspector]
     public UnityEvent loaded;
-    private VisualElement _root, _characterDisplay;
+    private VisualElement _root, _characterDisplay, _dialogueContainer;
     private Button _dialogueButton;
     private TextElement _characterName;
     private TextElement _dialogueText;
@@ -21,6 +23,7 @@ public class UIDialogueDisplay : MonoBehaviour
     public void Load(DialogueText dialogueText)
     {
         _root = GetComponent<UIDocument>().rootVisualElement;
+        _dialogueContainer = _root.Q<VisualElement>("dialogueContainer");
         _characterDisplay = _root.Q<VisualElement>(UIConstants.characterDisplayName);
         _characterName = _root.Q<TextElement>(UIConstants.characterNameName);
         _dialogueText = _root.Q<TextElement>(UIConstants.dialogueTextName);
@@ -31,14 +34,25 @@ public class UIDialogueDisplay : MonoBehaviour
         _finishedText = dialogueText.text;
         _dialogueText.text = "";
         _dialogueButton = _root.Q<Button>(UIConstants.dialogueButton);
-        _dialogueButton.clicked += () => displayComplete.Invoke();
+        _dialogueButton.clicked += () =>
+        {
+            displayComplete.Invoke();
+            _dialogueContainer.AddToClassList(UIConstants.flyOutRight);
+        };
         Sprite sprite = currentCharacter.emotionDictionary[dialogueText.emotion];
         _characterDisplay.style.backgroundImage = new StyleBackground(sprite);
+
+        Invoke("LazyWaitFunction", .1f);
+
         StartCoroutine((DisplayCharacters()));
     }
-
+    void LazyWaitFunction()
+    {
+        _dialogueContainer.RemoveFromClassList(UIConstants.flyOutLeft);
+    }
     IEnumerator DisplayCharacters()
     {
+        yield return new WaitForSeconds(3);
         string currentString = "";
         for (int i = 0; i < _finishedText.Length; i++)
         {
@@ -48,6 +62,8 @@ public class UIDialogueDisplay : MonoBehaviour
         }
         _dialogueButton.RemoveFromClassList(UIConstants.hideElement);
         _dialogueButton.AddToClassList((UIConstants.showElement));
+        
+
     }
     // Update is called once per frame
     void Update()

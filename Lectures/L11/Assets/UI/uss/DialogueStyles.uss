@@ -1,0 +1,17 @@
+.hideElement {
+    opacity: 0;
+    display: none;
+}
+
+.showElement {
+    opacity: 1;
+    display: initial;
+}
+
+.flyOutLeft {
+    translate: -2000px 0;
+}
+
+.flyOutRight {
+    translate: 2000px 0;
+}

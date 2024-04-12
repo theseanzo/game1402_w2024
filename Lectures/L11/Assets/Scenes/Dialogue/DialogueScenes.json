@@ -31,10 +31,21 @@
       "order": 1,
       "background":"bgd_022out",
       "dialogue": [
-        {"character_ref": "sakura", "emotion": "neutral", "text": "1.Hi, you are cute."}, 
-        {"character_ref": "hifi", "emotion": "happy", "text": "2.Yes you are cute"},
-        {"character_ref": "saya", "emotion": "happy", "text": "3.Yes you are cute"},
-        {"character_ref": "mono", "emotion": "happy", "text": "3.Yes you are cute"}
+        {"character_ref": "celestia", "emotion": "angry", "text": "How dare you speak to me?"},
+        {"character_ref": "sakura", "emotion": "happy", "text": "Good morning to you, too, darling..."},
+        {"character_ref": "mono", "emotion": "sad", "text": "I dropped my pancakes"},
+        {"character_ref": "celestia", "emotion": "neutral", "text": "I don't care"},
+        {"character_ref": "saya", "emotion": "shocked", "text": "Why can't you all be nice to each other?"},
+        {"character_ref": "hifu", "emotion": "sad", "text": "Don't hurt me. I don't want to get bullied"},
+        {"character_ref": "celestia", "emotion": "angry", "text": "If you don't shut up, I will hurt you."},
+        {"character_ref": "mono", "emotion": "angry", "text": "Why haven't you picked up my pancakes?"},
+        {"character_ref": "hifu", "emotion": "happy", "text": "I will eat the pancakes off the floor!"},
+        {"character_ref": "mono", "emotion": "angry", "text": "ONE V ONE ME. NO ITEMS. FOX ONLY. FINAL DESTINATION"},
+        {"character_ref": "saya", "emotion": "shocked", "text": "Why are you all fighting over pancakes?"},
+        {"character_ref": "celestia", "emotion": "happy", "text": "Thanks for getting rid of that guy"},
+        {"character_ref": "sakura", "emotion": "shocked", "text": "I do not think we should be talking like this in an IHop"}
+        
+
       ]
     }
   ]
