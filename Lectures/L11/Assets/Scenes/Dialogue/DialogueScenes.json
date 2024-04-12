@@ -1,0 +1,41 @@
+﻿{
+  "characters":[{
+    "reference": "celestia",
+    "name": "Taeko Yasuhiro",
+    "emotions": {"happy": "Celestia_3", "sad": "Celestia_14", "shocked": "Celestia_5", "neutral":"Celestia_0", "angry": "Celestia_10" }
+  },
+    {
+      "reference": "mono",
+      "name": "Monokuma",
+      "emotions": {"happy": "Monokuma_4", "sad": "Monokuma_8", "shocked": "Monokuma_13", "neutral":"Monokuma_1", "angry": "Monokuma_5" }
+    },
+    {
+      "reference": "saya",
+      "name": "Sayaka Maizono",
+      "emotions": {"happy": "Sayaka_6", "sad": "Sayaka_15", "shocked": "Sayaka_11", "neutral":"Sayaka_1", "angry": "Sayaka_12" }
+    },
+    {
+      "reference": "sakura",
+      "name": "Sakura Ogami",
+      "emotions": {"happy": "Sakura_8", "sad": "Sakura_4", "shocked": "Sakura_7", "neutral":"Sakura_1", "angry": "Sakura_9" }
+    },
+    {
+      "reference": "hifu",
+      "name": "Hifuni Yamada",
+      "emotions": {"happy": "Hifumi_10", "sad": "Hifumi_19", "shocked": "Hifumi_8", "neutral":"Hifumi_1", "angry": "Hifumi_13" }
+    }
+  ],
+  "scenes": [
+    {
+      "name": "opening_scene",
+      "order": 1,
+      "background":"bgd_022out",
+      "dialogue": [
+        {"character_ref": "sakura", "emotion": "neutral", "text": "1.Hi, you are cute."}, 
+        {"character_ref": "hifi", "emotion": "happy", "text": "2.Yes you are cute"},
+        {"character_ref": "saya", "emotion": "happy", "text": "3.Yes you are cute"},
+        {"character_ref": "mono", "emotion": "happy", "text": "3.Yes you are cute"}
+      ]
+    }
+  ]
+}
