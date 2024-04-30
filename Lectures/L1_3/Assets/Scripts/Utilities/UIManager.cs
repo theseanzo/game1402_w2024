@@ -9,17 +9,13 @@ public class UIManager : Singleton<UIManager>
     TMP_Text scoreText;
     [SerializeField]
     TMP_Text timeText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// Pretty self-explanatory. Could be nice for showing them formatting
+    /// </summary>
+    /// <param name="score"></param>
+    /// <param name="collected"></param>
+    /// <param name="totalItems"></param>
     public void SetScore(int score, int collected, int totalItems)
     { 
         this.scoreText.text = string.Format("Score: {0}\n{1}/{2}", score, collected, totalItems);

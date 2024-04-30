@@ -1,3 +1,6 @@
+/// <summary>
+/// A lot of students by this point won't really know the difference between static and regular classes. This will serve as a reminder of where to use static.
+/// </summary>
 public static class GameConstants
 {
     public const int BaseFoodValue = 1;

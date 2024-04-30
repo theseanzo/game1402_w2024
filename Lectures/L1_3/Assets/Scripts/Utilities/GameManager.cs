@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     private int _score;
-    private Food[] foods;
-    private int numberCollected = 0;
+    private Food[] _foods;
+    private int _numberCollected = 0;
     public int Score
     {
         get
@@ -17,9 +17,9 @@ public class GameManager : Singleton<GameManager>
         set
         {
             _score = value;
-            numberCollected += value >= 0 ? 1 : 0;
+            _numberCollected += value >= 0 ? 1 : 0;
 
-            UIManager.Instance.SetScore(_score, numberCollected, foods.Length);
+            UIManager.Instance.SetScore(_score, _numberCollected, _foods.Length);
         }
     }
     public float GameTime
@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         GameTime = 0;
-        foods = FindObjectsOfType<Food>();
+        _foods = FindObjectsOfType<Food>();
     }
 
     // Update is called once per frame

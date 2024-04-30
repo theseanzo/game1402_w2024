@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
-
+/// <summary>
+/// This is where you will spend a lot of the time in Lecture 1.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     //This is a standard 3D player controller
-    AnimatorController animatorController;
-    Vector3 moveDirection;
-    Transform cameraObject;
-    Rigidbody rb;
-
+    AnimatorController _animatorController;
+    Vector3 _moveDirection;
+    Transform _cameraObject;
+    Rigidbody _rb;
+    private GroundCheck _groundCheck;
+    /// <summary>
+    /// This will be their first time seeing headers
+    /// </summary>
     [Header("Movement")]
     [SerializeField]
     private float rotationSpeed = 15f;
@@ -19,45 +25,42 @@ public class PlayerController : MonoBehaviour
     float runSpeed = 5f;
     [SerializeField]
     float sprintSpeed = 7f;
-
-    [Header("Falling")]
-    [SerializeField]
-    float rayCastHeightOffset = 0.1f;
-    [SerializeField]
-    LayerMask groundLayer;
+    
 
     [Header("Jump info")]
     [SerializeField]
     float jumpForce = 20f;
 
     [Header("Input")]
-    private float xMovement;
-    private float yMovement;
-    private float movementAmount;
-    private float cameraMovementX;
-    private float cameraMovementY;
+    private float _xMovement;
+    private float _yMovement;
+    private float _movementAmount;
+    private float _cameraMovementX;
+    private float _cameraMovementY;
+    
+    bool _isSprinting;
 
-    bool isGrounded = true;
-    bool isJumping;
-    bool isSprinting;
+    
 
-
-    float inAirTimer;
-
-    SkinnedMeshRenderer meshRenderer;
+    SkinnedMeshRenderer _meshRenderer;
     private void Awake()
     {
-        animatorController = GetComponent<AnimatorController>(); //this grabs the AnimatorController
-        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();//remember this when dealing with 3d models as they typically do not have the mesh renderer in the same place as where you put all of your animators, scripts, etc 
-        rb = GetComponent<Rigidbody>();
-        cameraObject = Camera.main.transform;
-        Cursor.lockState = CursorLockMode.Locked;
+        _animatorController = GetComponent<AnimatorController>(); //this grabs the AnimatorController
+        _meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();//remember this when dealing with 3d models as they typically do not have the mesh renderer in the same place as where you put all of your animators, scripts, etc 
+        _rb = GetComponent<Rigidbody>();
+        _groundCheck = GetComponent<GroundCheck>();
+        _cameraObject = Camera.main.transform;
+        Cursor.lockState = CursorLockMode.Locked; //get rid of the cursor
         Cursor.visible = false;
     }
     private void Start()
     {
         StartCoroutine(ChangePlayerColor());
     }
+    /// <summary>
+    /// This is the first coroutine example I show. Feel free to show something different, but I feel it helps them with their first assignment
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ChangePlayerColor()
     {
         float alpha = 0.0f;
@@ -67,8 +70,7 @@ public class PlayerController : MonoBehaviour
             alpha += 0.005f * (upOrDown ? 1f : -1f);
             if (alpha >= 1.0f || alpha <= 0.0f)
                 upOrDown = !upOrDown;
-
-            meshRenderer.material.SetColor("_Color", Color.white * alpha);
+            _meshRenderer.material.SetColor("_Color", Color.white * alpha);
             yield return new WaitForFixedUpdate();
         }
 
@@ -77,50 +79,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animatorController.UpdateMovementValues(0, movementAmount, isSprinting);
-    }
-    private void LateUpdate()
-    {
-        // GroundCheck();
+        _animatorController.UpdateMovementValues(0, _movementAmount, _isSprinting);
     }
     private void FixedUpdate()
     {
         HandleMovement();
         HandleRotation();
-    }
-    private void HandleInput()
-    {
-
-
-    }
-    private void GroundCheck() //this is where we figure out if we are on the ground or not
-    {
-        RaycastHit hit;
-        Vector3 rayCastOrigin = transform.position;
-        rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffset;
-
-        if (!isGrounded)
-        {
-            if (Physics.SphereCast(rayCastOrigin, 0.5f, -Vector3.up, out hit, 0.5f, groundLayer))
-            {
-                isGrounded = true;
-            }
-        }
-
+        _groundCheck.Check(); //check for grounded
     }
     private void HandleMovement()
     {
-        Vector3 moveDirection = cameraObject.forward * yMovement;
-        moveDirection += cameraObject.right * xMovement;
+        Vector3 moveDirection = _cameraObject.forward * _yMovement;
+        moveDirection += _cameraObject.right * _xMovement;
         moveDirection.Normalize();
         moveDirection.y = 0;
-        if (isSprinting)
+        if (_isSprinting)
         {
             moveDirection = moveDirection * sprintSpeed;
         }
         else
         {
-            if (movementAmount >= 0.5f)
+            if (_movementAmount >= 0.5f)
             {
                 moveDirection = moveDirection * runSpeed;
             }
@@ -129,15 +108,17 @@ public class PlayerController : MonoBehaviour
                 moveDirection = moveDirection * walkSpeed;
             }
         }
-        moveDirection.y = rb.velocity.y;
-        rb.velocity = moveDirection;
+        moveDirection.y = _rb.velocity.y;
+        _rb.velocity = moveDirection;
     }
-
+    /// <summary>
+    /// This function should give them a lot of trouble. It will help them understand how you make a character face a particular direction using quaternions. It also gives them the opportunity to use Slerp for (potentially) the first time.
+    /// </summary>
     private void HandleRotation()
     {
         Vector3 targetDirection = Vector3.zero;
-        targetDirection = cameraObject.forward * yMovement;
-        targetDirection = targetDirection + cameraObject.right * xMovement;
+        targetDirection = _cameraObject.forward * _yMovement;
+        targetDirection = targetDirection + _cameraObject.right * _xMovement;
         targetDirection.Normalize();
         targetDirection.y = 0;
         if (targetDirection == Vector3.zero)
@@ -149,43 +130,24 @@ public class PlayerController : MonoBehaviour
 
     public void HandleMovementInput(Vector2 movement)
     {
-        xMovement = movement.x;
-        yMovement = movement.y;
-        movementAmount = Mathf.Abs(xMovement) + Mathf.Abs(yMovement);
-        
-        
+        _xMovement = movement.x;
+        _yMovement = movement.y;
+        _movementAmount = Mathf.Abs(_xMovement) + Mathf.Abs(_yMovement);
+
     }
     public void HandleSprintInput(bool sprint)
     {
-        isSprinting = sprint;
-        //if (Input.GetButton("Sprint")) //Remember: GetKey, GetButton, etc. is for a button that's held down. GetKeyDown, GetButtonDown, etc. only trigger when the button is held down
-        //{
-        //    isSprinting = true;
-        //}
-        //else
-        //{
-        //    isSprinting = false;
-        //}
+        _isSprinting = sprint;
     }
     public void HandleJumpInput()
     {
-        if (isGrounded)
+        if (_groundCheck.IsGrounded)
         {
-            Vector3 velocity = rb.velocity;
+            Vector3 velocity = _rb.velocity;
             velocity.y = jumpForce; //change our y velocity to be whatever we want it to be for jumping up
-            rb.velocity = velocity; //reattach that to our rigid body
-            isGrounded = false; //inform that we are no longer on the ground
+            _rb.velocity = velocity; //reattach that to our rigid body
+            _groundCheck.DisableTemporarily(); //we disable this temporarily so that ground checks don't trigger as soon as we leave the air.
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            isGrounded = true;
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            isGrounded = false;
-    }
 }

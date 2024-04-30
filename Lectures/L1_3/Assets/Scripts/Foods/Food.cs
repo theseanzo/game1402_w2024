@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    bool hit = false;
+    bool _hit = false;
     public int Value
     {
         get; protected set;
@@ -28,9 +28,9 @@ public class Food : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<PlayerController>() && !hit)
+        if (other.gameObject.GetComponent<PlayerController>() && !_hit)
         {
-            hit = true;
+            _hit = true;
             GameManager.Instance.Score += Value; //recall that the value is set in each one of the food's children
             Destroy(this.gameObject);
         }
