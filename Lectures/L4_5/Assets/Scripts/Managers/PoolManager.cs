@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoolManager : Singleton<PoolManager>
 {
-    Dictionary<string, Stack<PoolObject>> stackDictionary = new Dictionary<string, Stack<PoolObject>>();
+    Dictionary<string, Stack<PoolObject>> _stackDictionary = new Dictionary<string, Stack<PoolObject>>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +18,14 @@ public class PoolManager : Singleton<PoolManager>
         {
             Stack<PoolObject> objStack = new Stack<PoolObject>();
             objStack.Push(poolObject); //in a stack, we push something inside of it, and we pop it out
-            stackDictionary.Add(poolObject.name, objStack); //the reason we are doing this is so that we know which stack to grab our particular object from
+            _stackDictionary.Add(poolObject.name, objStack); //the reason we are doing this is so that we know which stack to grab our particular object from
         }
     }
 
     public PoolObject Spawn(string name)
     {
         //first thing we need to do is reference the correct stack
-        Stack<PoolObject> objStack = stackDictionary[name]; //grab the correct object
+        Stack<PoolObject> objStack = _stackDictionary[name]; //grab the correct object
         //we have two situations when we are spawning an item: 1) we have only one item left, and if that's the case, we will instantiate a new object (this is to make sure that we still have one left all of the time)
         //situation 2: we have more than one object, so we simply pop it out and hand it to back to whomever made the request
         if(objStack.Count == 1) //check the number of items
@@ -41,7 +41,7 @@ public class PoolManager : Singleton<PoolManager>
     }
     public void DeSpawn(PoolObject poolObject)
     {
-        Stack<PoolObject> objStack = stackDictionary[poolObject.name];
+        Stack<PoolObject> objStack = _stackDictionary[poolObject.name];
         //disable that object and put in the stack
         poolObject.gameObject.SetActive(false);
         objStack.Push(poolObject);

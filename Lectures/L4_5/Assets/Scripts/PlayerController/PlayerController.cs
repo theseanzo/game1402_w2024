@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	#region Private Variables
-	Rigidbody2D rb;
-	Vector2 movement, mousePosition;
+	Rigidbody2D _rb;
+	Vector2 _movement, _mousePosition;
 	private Gun weapon;
 	#endregion
 	#region Serialize Fields
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 	#endregion
 	private void Awake()
 	{
-		rb = GetComponent<Rigidbody2D>();
+		_rb = GetComponent<Rigidbody2D>();
 		if(gun && gunLocation) //recall that an "existence check" returns a boolean value (true or false) so if(gun && gunLocation) is saying "do gun and gun location exist?"
         {
 			weapon = Instantiate(gun, gunLocation);
@@ -39,16 +39,16 @@ public class PlayerController : MonoBehaviour
 	}
 	public void HandleMovementInput(Vector2 movementInput)
 	{
-		movement = movementInput;
-		movement.Normalize();
+		_movement = movementInput;
+		_movement.Normalize();
 	}
 	public void MouseAim(Vector2 mousePos)
 	{
-		mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+		_mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
 	}
 	public void Shoot()
 	{
-		weapon?.Shoot(rb.velocity);
+		weapon?.Shoot(_rb.velocity);
 	}
 	// Update is called once per frame
 	void Update()
@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate() 
 	{
-		rb.velocity = movement * moveSpeed * Time.fixedDeltaTime;
-		Vector2 lookDirection = mousePosition - rb.position;
+		_rb.velocity = _movement * moveSpeed * Time.fixedDeltaTime;
+		Vector2 lookDirection = _mousePosition - _rb.position;
 		lookDirection.Normalize();
 		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-		rb.rotation = angle;
+		_rb.rotation = angle;
 
 
 

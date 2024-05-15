@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinematicCar : MonoBehaviour
 {
     Rigidbody _rb;
-    Vector3 moveVector;
+    Vector3 _moveVector;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +13,11 @@ public class KinematicCar : MonoBehaviour
     }
     public void SetMove(Vector3 mVector)
     {
-        this.moveVector = mVector;
+        this._moveVector = mVector;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + moveVector * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + _moveVector * Time.fixedDeltaTime);
     }
 }
